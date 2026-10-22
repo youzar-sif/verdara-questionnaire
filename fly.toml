@@ -1,0 +1,48 @@
+# fly.toml — Verdara Intelligence questionnaire
+# Zero-dependency Node server with a persistent volume for submissions.
+#
+# Deploy:
+#   fly launch --no-deploy --copy-config   (first time, if you want a new app)
+#   fly volumes create verdara_data --size 1 --region ams
+#   fly secrets set ADMIN_PASSWORD=...
+#   fly deploy
+
+app = "verdara-questionnaire"
+primary_region = "ams"
+
+[build]
+  builder = "heroku/builder:24"
+
+[env]
+  NODE_ENV = "production"
+  DATA_DIR = "/data"
+
+[mounts]
+  source = "verdara_data"
+  destination = "/data"
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]
+
+  [http_service.concurrency]
+    type = "requests"
+    soft_limit = 200
+    hard_limit = 250
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "256mb"
+
+[checks]
+  [checks.alive]
+    type = "http"
+    port = 3000
+    path = "/api/health"
+    interval = "30s"
+    timeout = "5s"
+    grace_period = "10s"
