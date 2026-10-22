@@ -70,10 +70,15 @@ The app is a single Node process, so it runs on any small host.
 
 1. Push this folder to a GitHub repository.
 2. Render → **New → Blueprint** → connect the repo. Render reads `render.yaml`
-   and configures the runtime, start command, environment variables and persistent
-   disk automatically.
+   and configures the runtime, start command and environment variables automatically.
 3. When prompted, enter `ADMIN_PASSWORD` and click **Apply**.
 4. Deploy, then share the generated URL.
+
+> **Free tier warning:** Render does not allow persistent disks on free services, so
+> submissions live on the container's temporary filesystem. They survive idle
+> spin-downs but are **lost on every redeploy or restart** — export your CSV from
+> `/admin` before pushing a new commit. For permanent storage, upgrade to a paid
+> instance and add a disk mounted at `/var/data` with `DATA_DIR=/var/data`.
 
 **Render (manual)**
 
@@ -83,13 +88,14 @@ The app is a single Node process, so it runs on any small host.
 4. Start command: `node server.js`.
 5. Environment variables:
    - `ADMIN_PASSWORD` = a strong password
-   - `DATA_DIR` = `/var/data`
-6. Add a **persistent disk** mounted at `/var/data` so responses survive restarts and deploys.
+   - `DATA_DIR` = `/var/data` *(only needed when a disk is mounted)*
+6. On a paid instance, add a **persistent disk** mounted at `/var/data` so responses
+   survive restarts and deploys.
 7. Deploy, then share the generated URL.
 
 > Render's free instance spins down after 15 minutes idle; the first visit after
-> that takes about 30 seconds to wake. Export your CSV before redeploying if you
-> are not using a persistent disk.
+> that takes about 30 seconds to wake. If you need durable storage for free, keep
+> your own machine running and use the tunnel below instead.
 
 **Railway**
 
