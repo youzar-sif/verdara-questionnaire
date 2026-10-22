@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Responses — Verdara Intelligence</title>
+  <meta name="theme-color" content="#16291F">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css?v=1.0.0">
+  <link rel="stylesheet" href="/admin.css?v=1.0.0">
+  <script defer src="/admin.js?v=1.0.0"></script>
+</head>
+<body class="admin-body">
+
+  <svg class="sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11M7.5 11l4.5 4.5 4.5-4.5M5 20h14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 11a8 8 0 1 0-2.3 6.3M20 4.5V11h-6.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m16 16 4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M15 5.5A2.5 2.5 0 0 0 12.5 3H6a2.5 2.5 0 0 0-2.5 2.5V13A2.5 2.5 0 0 0 6 15.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9.5 7V4.5h5V7M7 7l.8 13h8.4L17 7M10 11v5.5M14 11v5.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-inbox" viewBox="0 0 24 24"><path d="M4 13.5 6.5 5h11L20 13.5V19a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-5.5Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M4 13.5h4.5l1.2 2h4.6l1.2-2H20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 7.5V12l3 1.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </svg>
+
+  <header class="admin-header">
+    <div class="admin-header__inner">
+      <a class="brand" href="/admin">
+        <span class="brand__mark" aria-hidden="true">V</span>
+        <span class="brand__text">
+          <strong>Verdara</strong>
+          <em>Intelligence</em>
+        </span>
+      </a>
+      <div class="admin-header__meta">
+        <a class="admin-link" href="/" target="_blank" rel="noopener">Open questionnaire</a>
+        <button type="button" class="btn btn--ghost btn--sm" id="btnCopyLink">
+          <svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg>
+          Copy share link
+        </button>
+        <a class="btn btn--primary btn--sm" href="/api/submissions.csv">
+          <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
+          Export CSV
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="admin-main">
+    <div class="admin-heading">
+      <div>
+        <p class="eyebrow"><span class="eyebrow__line" aria-hidden="true"></span>Verdara Home · Discovery</p>
+        <h1>Questionnaire responses</h1>
+        <p class="admin-subtitle">Every completed questionnaire lands here, ready to shape the Verdara Intelligence build.</p>
+      </div>
+      <div class="admin-share">
+        <span class="admin-share__label">Share this link</span>
+        <button type="button" class="admin-share__value" id="shareUrl" title="Copy share link">
+          <span id="shareUrlText"></span>
+          <svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <section class="stats" aria-label="Summary">
+      <div class="stat">
+        <span class="stat__label">Total responses</span>
+        <strong class="stat__value" id="statTotal">—</strong>
+        <span class="stat__foot">All time</span>
+      </div>
+      <div class="stat">
+        <span class="stat__label">Last 7 days</span>
+        <strong class="stat__value" id="statWeek">—</strong>
+        <span class="stat__foot">New submissions</span>
+      </div>
+      <div class="stat stat--wide">
+        <span class="stat__label">Top priority</span>
+        <strong class="stat__value stat__value--sm" id="statPriority">—</strong>
+        <span class="stat__foot">Most common first choice</span>
+      </div>
+      <div class="stat">
+        <span class="stat__label">Average time</span>
+        <strong class="stat__value" id="statDuration">—</strong>
+        <span class="stat__foot">Per completed form</span>
+      </div>
+    </section>
+
+    <section class="responses" aria-labelledby="responsesTitle">
+      <div class="responses__toolbar">
+        <h2 id="responsesTitle">All responses <span class="count-badge" id="countBadge">0</span></h2>
+        <div class="responses__actions">
+          <label class="search">
+            <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+            <input type="search" id="searchInput" placeholder="Search name, role or answers…" aria-label="Search responses">
+          </label>
+          <button type="button" class="icon-btn" id="btnRefresh" title="Refresh responses" aria-label="Refresh responses">
+            <svg class="icon" aria-hidden="true"><use href="#i-refresh"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="table-wrap" id="tableWrap">
+        <table class="response-table">
+          <thead>
+            <tr>
+              <th scope="col">Submitted</th>
+              <th scope="col">Respondent</th>
+              <th scope="col">Top priority</th>
+              <th scope="col">AI control</th>
+              <th scope="col" class="num">Time</th>
+              <th scope="col" class="arrow-col"><span class="sr-only">Open</span></th>
+            </tr>
+          </thead>
+          <tbody id="responseRows"></tbody>
+        </table>
+      </div>
+
+      <div class="empty-state" id="emptyState" hidden>
+        <div class="empty-state__icon"><svg class="icon"><use href="#i-inbox"/></svg></div>
+        <h3 id="emptyTitle">No responses yet</h3>
+        <p id="emptyText">Share the questionnaire link — responses will appear here automatically.</p>
+        <button type="button" class="btn btn--primary" id="btnEmptyCopy">
+          <svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg>
+          Copy share link
+        </button>
+      </div>
+
+      <div class="admin-error" id="adminError" hidden></div>
+    </section>
+  </main>
+
+  <div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
+  <aside class="drawer" id="drawer" aria-labelledby="drawerName" aria-hidden="true">
+    <div class="drawer__head">
+      <div class="drawer__identity">
+        <span class="drawer__eyebrow">Response</span>
+        <h2 id="drawerName">—</h2>
+        <p id="drawerMeta">—</p>
+      </div>
+      <button type="button" class="icon-btn icon-btn--lg" id="btnCloseDrawer" aria-label="Close response">
+        <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
+      </button>
+    </div>
+    <div class="drawer__body" id="drawerBody"></div>
+    <div class="drawer__foot">
+      <button type="button" class="btn btn--ghost btn--sm" id="btnDelete" style="color:#8F4529;">
+        <svg class="icon" aria-hidden="true"><use href="#i-trash"/></svg>
+        Delete response
+      </button>
+      <span class="drawer__foot-note" id="drawerId"></span>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+</body>
+</html>

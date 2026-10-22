@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Verdara Intelligence — Discovery Questionnaire</title>
+  <meta name="description" content="A 10–15 minute questionnaire for Verdara Home, shaping the Verdara Intelligence management system.">
+  <meta name="theme-color" content="#16291F">
+  <meta property="og:title" content="Verdara Intelligence — Discovery Questionnaire">
+  <meta property="og:description" content="Help us build the system Verdara Home actually needs. 10–15 minutes, 5 short sections.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css?v=1.0.0">
+  <script defer src="/config.js?v=1.0.0"></script>
+  <script defer src="/app.js?v=1.0.0"></script>
+</head>
+<body>
+
+  <svg class="sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5M11 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 7.5V12l3 1.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 6.8" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="10" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8.2 10V7.8a3.8 3.8 0 0 1 7.6 0V10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11M7.5 11l4.5 4.5 4.5-4.5M5 20h14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-print" viewBox="0 0 24 24"><path d="M7 9V4h10v5M7 18H5a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="7" y="14" width="10" height="7" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="M21 3.5 10.5 14M21 3.5l-6.7 17-3.8-6.5L3.5 10.2 21 3.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3.5c.7 4.6 3.4 7.3 8 8-4.6.7-7.3 3.4-8 8-.7-4.6-3.4-7.3-8-8 4.6-.7 7.3-3.4 8-8Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 11a8 8 0 1 0-2.3 6.3M20 4.5V11h-6.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </svg>
+
+  <header class="site-header" id="siteHeader">
+    <div class="site-header__inner">
+      <a class="brand" href="/">
+        <span class="brand__mark" aria-hidden="true">V</span>
+        <span class="brand__text">
+          <strong>Verdara</strong>
+          <em>Intelligence</em>
+        </span>
+      </a>
+      <div class="header-meta">
+        <span class="time-pill">
+          <svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>
+          <span>10–15 min</span>
+        </span>
+        <span class="save-status" id="saveStatus" aria-live="polite"></span>
+      </div>
+    </div>
+  </header>
+
+  <main id="app">
+
+    <!-- ============================ INTRO ============================ -->
+    <section class="view view--intro" id="viewIntro" aria-labelledby="introTitle">
+      <div class="intro-grid">
+        <div class="intro-copy">
+          <p class="eyebrow"><span class="eyebrow__line" aria-hidden="true"></span>Verdara Home · Discovery questionnaire</p>
+          <h1 id="introTitle">Tell us how Verdara Home <em>really</em> runs.</h1>
+          <p class="intro-lede">
+            We're designing <strong>Verdara Intelligence</strong> — one clear view of sales, stock, customers and cash.
+            Before we build, we need an honest picture of how things work today and what would make the biggest difference to you.
+          </p>
+
+          <ul class="intro-meta" aria-label="Questionnaire details">
+            <li>
+              <span class="intro-meta__label">For</span>
+              <span class="intro-meta__value">Verdara Home team</span>
+            </li>
+            <li>
+              <span class="intro-meta__label">Format</span>
+              <span class="intro-meta__value">5 sections · 15 questions</span>
+            </li>
+            <li>
+              <span class="intro-meta__label">Time</span>
+              <span class="intro-meta__value">10–15 minutes</span>
+            </li>
+          </ul>
+
+          <div class="intro-actions">
+            <button type="button" class="btn btn--primary btn--lg" id="btnStart">
+              <span id="btnStartLabel">Start the questionnaire</span>
+              <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </button>
+            <button type="button" class="link-btn" id="btnStartOver" hidden>Start over</button>
+          </div>
+
+          <p class="intro-resume" id="introResume" hidden>Your previous answers were saved on this device.</p>
+
+          <p class="privacy-note">
+            <svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg>
+            No wrong answers. Short answers are perfectly fine. Your replies are used only for this project.
+          </p>
+        </div>
+
+        <aside class="hero-card" aria-label="What the questionnaire covers">
+          <div class="hero-card__grain" aria-hidden="true"></div>
+          <div class="hero-card__top">
+            <span class="hero-card__kicker">Inside this questionnaire</span>
+            <span class="hero-card__stamp" aria-hidden="true">VI · 01</span>
+          </div>
+          <ol class="hero-list">
+            <li>
+              <span class="hero-list__num">01</span>
+              <span class="hero-list__body"><strong>Current operations</strong><small>How the business runs today</small></span>
+            </li>
+            <li>
+              <span class="hero-list__num">02</span>
+              <span class="hero-list__body"><strong>Finance &amp; accounting</strong><small>Money in, money out, visibility</small></span>
+            </li>
+            <li>
+              <span class="hero-list__num">03</span>
+              <span class="hero-list__body"><strong>Stock &amp; store</strong><small>Inventory, orders and payments</small></span>
+            </li>
+            <li>
+              <span class="hero-list__num">04</span>
+              <span class="hero-list__body"><strong>AI &amp; automation</strong><small>What the system should handle</small></span>
+            </li>
+            <li>
+              <span class="hero-list__num">05</span>
+              <span class="hero-list__body"><strong>Dashboard &amp; priorities</strong><small>What matters first</small></span>
+            </li>
+          </ol>
+          <div class="hero-card__foot">
+            <div>
+              <span class="hero-card__label">Designed around</span>
+              <strong>The Verdara Intelligence blueprint</strong>
+            </div>
+            <span class="hero-card__seal" aria-hidden="true">V</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============================ FORM ============================ -->
+    <section class="view view--form" id="viewForm" aria-label="Questionnaire" hidden>
+      <div class="form-shell">
+
+        <aside class="rail" aria-label="Questionnaire progress">
+          <div class="rail__progress">
+            <div class="rail__progress-head">
+              <span>Progress</span>
+              <span id="progressPct">0%</span>
+            </div>
+            <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progressTrack">
+              <div class="progress-bar" id="progressBar"></div>
+            </div>
+          </div>
+
+          <ol class="step-list" id="stepList">
+            <li data-step-link="1"><span class="step-list__num">01</span><span class="step-list__label">Operations</span></li>
+            <li data-step-link="2"><span class="step-list__num">02</span><span class="step-list__label">Finance</span></li>
+            <li data-step-link="3"><span class="step-list__num">03</span><span class="step-list__label">Stock &amp; store</span></li>
+            <li data-step-link="4"><span class="step-list__num">04</span><span class="step-list__label">AI &amp; automation</span></li>
+            <li data-step-link="5"><span class="step-list__num">05</span><span class="step-list__label">Priorities</span></li>
+            <li data-step-link="6"><span class="step-list__num step-list__num--check"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><span class="step-list__label">Review</span></li>
+          </ol>
+
+          <div class="rail__note">
+            <svg class="icon" aria-hidden="true"><use href="#i-spark"/></svg>
+            <p>Answers save automatically on this device, so you can pause and come back.</p>
+          </div>
+        </aside>
+
+        <div class="form-main">
+
+          <div class="mobile-progress">
+            <div class="mobile-progress__meta">
+              <span id="mobileStepLabel">Section 1 of 5 · Operations</span>
+              <span id="mobilePct">0%</span>
+            </div>
+            <div class="progress-track"><div class="progress-bar" id="mobileProgressBar"></div></div>
+          </div>
+
+          <form id="questionnaire" novalidate autocomplete="off">
+
+            <!-- ---------------- STEP 1 ---------------- -->
+            <section class="step" data-step="1" aria-labelledby="s1title">
+              <header class="section-head">
+                <p class="section-kicker">Section 01 <span aria-hidden="true">·</span> Operations</p>
+                <h2 id="s1title" tabindex="-1">Current business operations</h2>
+                <p>Let's start with how Verdara Home runs day to day.</p>
+              </header>
+
+              <div class="respondent">
+                <p class="respondent__title">First, who's answering?</p>
+                <div class="field-grid">
+                  <label class="field">
+                    <span class="field__label">Your name <em>required</em></span>
+                    <input type="text" id="respondentName" name="respondent_name" placeholder="Your full name" maxlength="120" autocomplete="name">
+                    <span class="field__error" id="nameError" role="alert" hidden>Please add your name so we know who answered.</span>
+                  </label>
+                  <label class="field">
+                    <span class="field__label">Your role</span>
+                    <input type="text" id="respondentRole" name="respondent_role" placeholder="e.g. Owner" maxlength="120" autocomplete="organization-title">
+                  </label>
+                </div>
+              </div>
+
+              <div class="question" data-q="q1" data-type="multi">
+                <div class="question__head">
+                  <span class="qnum">01</span>
+                  <div>
+                    <h3 class="question__label" id="q1label">How do you currently record a sale?</h3>
+                    <p class="question__hint">Select all that apply — at the counter, online, or over the phone.</p>
+                  </div>
+                </div>
+                <div class="options" role="group" aria-labelledby="q1label">
+                  <label class="option">
+                    <input type="checkbox" name="q1" value="Excel / Google Sheets">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Excel / Google Sheets</span>
+                  </label>
+                  <label class="option">
+                    <input type="checkbox" name="q1" value="Cash register / POS software">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Cash register / POS software</span>
+                  </label>
+                  <label class="option">
+                    <input type="checkbox" name="q1" value="Accounting software">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Accounting software</span>
+                  </label>
+                  <label class="option">
+                    <input type="checkbox" name="q1" value="Notebook / Manual records">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Notebook / Manual records</span>
+                  </label>
+                  <label class="option">
+                    <input type="checkbox" name="q1" value="WhatsApp / phone notes">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">WhatsApp / phone notes</span>
+                  </label>
+                  <div class="option option--other">
+                    <label class="option__main">
+                      <input type="checkbox" name="q1" value="Other">
+                      <span class="option__control" aria-hidden="true"></span>
+                      <span class="option__text">Other</span>
+                    </label>
+                    <input class="option__input" type="text" name="q1_other" placeholder="Please specify…" aria-label="Other — please specify" maxlength="500" tabindex="-1">
+                  </div>
+                </div>
+              </div>
+
+              <div class="question" data-q="q2" data-type="text">
+                <div class="question__head">
+                  <span class="qnum">02</span>
+                  <div>
+                    <h3 class="question__label" id="q2label">Where does your product and stock information live today?</h3>
+                    <p class="question__hint">Files, notebooks, software, WhatsApp — plus a rough product count if you know it.</p>
+                  </div>
+                </div>
+                <textarea name="q2" rows="3" placeholder="e.g. An Excel file with about 300 products…" aria-labelledby="q2label" maxlength="4000"></textarea>
+              </div>
+
+              <div class="question" data-q="q3" data-type="text">
+                <div class="question__head">
+                  <span class="qnum">03</span>
+                  <div>
+                    <h3 class="question__label" id="q3label">What are the biggest difficulties you face when managing the business?</h3>
+                    <p class="question__hint">The things that cost you time, money or peace of mind — and roughly how often they happen.</p>
+                  </div>
+                </div>
+                <textarea name="q3" rows="4" placeholder="Tell us what gets in the way…" aria-labelledby="q3label" maxlength="4000"></textarea>
+              </div>
+            </section>
+
+            <!-- ---------------- STEP 2 ---------------- -->
+            <section class="step" data-step="2" aria-labelledby="s2title" hidden>
+              <header class="section-head">
+                <p class="section-kicker">Section 02 <span aria-hidden="true">·</span> Finance</p>
+                <h2 id="s2title" tabindex="-1">Finance &amp; accounting</h2>
+                <p>How money is tracked, reported and reviewed today.</p>
+              </header>
+
+              <div class="question" data-q="q4" data-type="text">
+                <div class="question__head">
+                  <span class="qnum">04</span>
+                  <div>
+                    <h3 class="question__label" id="q4label">How do you track income, expenses and cash — and who prepares the books?</h3>
+                    <p class="question__hint">Include the tools, sheets or people involved, and how often they're reviewed.</p>
+                  </div>
+                </div>
+                <textarea name="q4" rows="4" placeholder="e.g. Sales in a notebook, expenses in Excel, accountant reviews monthly…" aria-labelledby="q4label" maxlength="4000"></textarea>
+              </div>
+
+              <div class="question" data-q="q5" data-type="multi">
+                <div class="question__head">
+                  <span class="qnum">05</span>
+                  <div>
+                    <h3 class="question__label" id="q5label">Which financial information would you like to see instantly?</h3>
+                    <p class="question__hint">Select all that apply.</p>
+                  </div>
+                </div>
+                <div class="options" role="group" aria-labelledby="q5label">
+                  <label class="option">
+                    <input type="checkbox" name="q5" value="Daily / Monthly sales">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Daily / Monthly sales</span>
+                  </label>
+                  <label class="option">
+                    <input type="checkbox" name="q5" value="Expenses">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Expenses</span>
+                  </label>
+                  <label class="option">
+                    <input type="checkbox" name="q5" value="Profit and profit margins">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Profit and profit margins</span>
+                  </label>
+                  <label class="option">
+                    <input type="checkbox" name="q5" value="Cash available">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Cash available</span>
+                  </label>
+                  <label class="option">
+                    <input type="checkbox" name="q5" value="Customer payments and unpaid balances">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Customer payments and unpaid balances</span>
+                  </label>
+                  <label class="option">
+                    <input type="checkbox" name="q5" value="Supplier payments and outstanding amounts">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Supplier payments and outstanding amounts</span>
+                  </label>
+                  <div class="option option--other">
+                    <label class="option__main">
+                      <input type="checkbox" name="q5" value="Other">
+                      <span class="option__control" aria-hidden="true"></span>
+                      <span class="option__text">Other</span>
+                    </label>
+                    <input class="option__input" type="text" name="q5_other" placeholder="Please specify…" aria-label="Other — please specify" maxlength="500" tabindex="-1">
+                  </div>
+                </div>
+              </div>
+
+              <div class="question" data-q="q6" data-type="single">
+                <div class="question__head">
+                  <span class="qnum">06</span>
+                  <div>
+                    <h3 class="question__label" id="q6label">Roughly how many sales or orders do you handle on a typical day?</h3>
+                    <p class="question__hint">A range is enough — it helps us size the first version.</p>
+                  </div>
+                </div>
+                <div class="options" role="radiogroup" aria-labelledby="q6label">
+                  <label class="option option--radio">
+                    <input type="radio" name="q6" value="Under 10 per day">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Under 10 per day</span>
+                  </label>
+                  <label class="option option--radio">
+                    <input type="radio" name="q6" value="10–30 per day">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">10–30 per day</span>
+                  </label>
+                  <label class="option option--radio">
+                    <input type="radio" name="q6" value="30–100 per day">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">30–100 per day</span>
+                  </label>
+                  <label class="option option--radio">
+                    <input type="radio" name="q6" value="Over 100 per day">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Over 100 per day</span>
+                  </label>
+                  <label class="option option--radio">
+                    <input type="radio" name="q6" value="Not sure / varies a lot">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Not sure / varies a lot</span>
+                  </label>
+                </div>
+              </div>
+            </section>
+
+            <!-- ---------------- STEP 3 ---------------- -->
+            <section class="step" data-step="3" aria-labelledby="s3title" hidden>
+              <header class="section-head">
+                <p class="section-kicker">Section 03 <span aria-hidden="true">·</span> Stock &amp; store</p>
+                <h2 id="s3title" tabindex="-1">Stock &amp; physical store</h2>
+                <p>How you keep track of products, orders and payments.</p>
+              </header>
+
+              <div class="question" data-q="q7" data-type="text">
+                <div class="question__head">
+                  <span class="qnum">07</span>
+                  <div>
+                    <h3 class="question__label" id="q7label">How do you currently know whether a product is in stock?</h3>
+                    <p class="question__hint">Walk us through how you check.</p>
+                  </div>
+                </div>
+                <textarea name="q7" rows="3" placeholder="e.g. We check the shelf, then call the stockroom…" aria-labelledby="q7label" maxlength="4000"></textarea>
+              </div>
+
+              <div class="question" data-q="q8" data-type="multi">
+                <div class="question__head">
+                  <span class="qnum">08</span>
+                  <div>
+                    <h3 class="question__label" id="q8label">Which stock-related problems would you most like to solve?</h3>
+                    <p class="question__hint">Select all that apply.</p>
+                  </div>
+                </div>
+                <div class="options" role="group" aria-labelledby="q8label">
+                  <label class="option">
+                    <input type="checkbox" name="q8" value="Products running out of stock">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Products running out of stock</span>
+                  </label>
+                  <label class="option">
+                    <input type="checkbox" name="q8" value="Products remaining unsold for too long">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Products remaining unsold for too long</span>
+                  </label>
+                  <label class="option">
+                    <input type="checkbox" name="q8" value="Stock discrepancies">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Stock discrepancies</span>
+                  </label>
+                  <label class="option">
+                    <input type="checkbox" name="q8" value="Difficulty finding product information">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Difficulty finding product information</span>
+                  </label>
+                  <label class="option">
+                    <input type="checkbox" name="q8" value="Tracking stock across online and offline sales">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Tracking stock across online and offline sales</span>
+                  </label>
+                  <div class="option option--other">
+                    <label class="option__main">
+                      <input type="checkbox" name="q8" value="Other">
+                      <span class="option__control" aria-hidden="true"></span>
+                      <span class="option__text">Other</span>
+                    </label>
+                    <input class="option__input" type="text" name="q8_other" placeholder="Please specify…" aria-label="Other — please specify" maxlength="500" tabindex="-1">
+                  </div>
+                </div>
+              </div>
+
+              <div class="question" data-q="q9" data-type="text">
+                <div class="question__head">
+                  <span class="qnum">09</span>
+                  <div>
+                    <h3 class="question__label" id="q9label">How do you currently track customer orders, deposits, and remaining payments?</h3>
+                    <p class="question__hint">Especially for custom or delivered orders.</p>
+                  </div>
+                </div>
+                <textarea name="q9" rows="3" placeholder="e.g. Order book with deposit and balance columns…" aria-labelledby="q9label" maxlength="4000"></textarea>
+              </div>
+            </section>
+
+            <!-- ---------------- STEP 4 ---------------- -->
+            <section class="step" data-step="4" aria-labelledby="s4title" hidden>
+              <header class="section-head">
+                <p class="section-kicker">Section 04 <span aria-hidden="true">·</span> AI &amp; automation</p>
+                <h2 id="s4title" tabindex="-1">AI agents &amp; automation</h2>
+                <p>Where AI could genuinely save you time.</p>
+              </header>
+
+              <div class="question" data-q="q10" data-type="multi">
+                <div class="question__head">
+                  <span class="qnum">10</span>
+                  <div>
+                    <h3 class="question__label" id="q10label">Which tasks would you most like AI to handle?</h3>
+                    <p class="question__hint">Select all that apply — the repetitive work you'd happily hand over.</p>
+                  </div>
+                </div>
+                <div class="options" role="group" aria-labelledby="q10label">
+                  <label class="option">
+                    <input type="checkbox" name="q10" value="Reconcile daily sales with cash collected">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Reconcile daily sales with cash collected</span>
+                  </label>
+                  <label class="option">
+                    <input type="checkbox" name="q10" value="Flag products that are running low">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Flag products that are running low</span>
+                  </label>
+                  <label class="option">
+                    <input type="checkbox" name="q10" value="Categorise expenses">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Categorise expenses</span>
+                  </label>
+                  <label class="option">
+                    <input type="checkbox" name="q10" value="Prepare the monthly summary">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Prepare the monthly summary</span>
+                  </label>
+                  <label class="option">
+                    <input type="checkbox" name="q10" value="Follow up on unpaid customer balances">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Follow up on unpaid customer balances</span>
+                  </label>
+                  <label class="option">
+                    <input type="checkbox" name="q10" value="Suggest what to reorder from suppliers">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Suggest what to reorder from suppliers</span>
+                  </label>
+                  <label class="option">
+                    <input type="checkbox" name="q10" value="Answer questions about the business">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Answer questions about the business</span>
+                  </label>
+                  <div class="option option--other">
+                    <label class="option__main">
+                      <input type="checkbox" name="q10" value="Other">
+                      <span class="option__control" aria-hidden="true"></span>
+                      <span class="option__text">Other</span>
+                    </label>
+                    <input class="option__input" type="text" name="q10_other" placeholder="Please specify…" aria-label="Other — please specify" maxlength="500" tabindex="-1">
+                  </div>
+                </div>
+              </div>
+
+              <div class="question" data-q="q11" data-type="single">
+                <div class="question__head">
+                  <span class="qnum">11</span>
+                  <div>
+                    <h3 class="question__label" id="q11label">How much control should AI have?</h3>
+                    <p class="question__hint">Choose the level you're comfortable with today.</p>
+                  </div>
+                </div>
+                <div class="options" role="radiogroup" aria-labelledby="q11label">
+                  <label class="option option--radio">
+                    <input type="radio" name="q11" value="Only answer questions and provide reports">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Only answer questions and provide reports</span>
+                  </label>
+                  <label class="option option--radio">
+                    <input type="radio" name="q11" value="Suggest actions for us to approve">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Suggest actions for us to approve</span>
+                  </label>
+                  <label class="option option--radio">
+                    <input type="radio" name="q11" value="Perform selected routine tasks automatically">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Perform selected routine tasks automatically</span>
+                  </label>
+                  <label class="option option--radio">
+                    <input type="radio" name="q11" value="Not sure yet">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Not sure yet</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="question" data-q="q12" data-type="text">
+                <div class="question__head">
+                  <span class="qnum">12</span>
+                  <div>
+                    <h3 class="question__label" id="q12label">What would make this system truly valuable — and what would stop you from using it?</h3>
+                    <p class="question__hint">Think about trust, cost, training, internet reliability or language. One thing each is enough.</p>
+                  </div>
+                </div>
+                <textarea name="q12" rows="4" placeholder="What success looks like — and what could get in the way…" aria-labelledby="q12label" maxlength="4000"></textarea>
+              </div>
+            </section>
+
+            <!-- ---------------- STEP 5 ---------------- -->
+            <section class="step" data-step="5" aria-labelledby="s5title" hidden>
+              <header class="section-head">
+                <p class="section-kicker">Section 05 <span aria-hidden="true">·</span> Priorities</p>
+                <h2 id="s5title" tabindex="-1">Dashboard &amp; priorities</h2>
+                <p>What you want to see first — and what we should build first.</p>
+              </header>
+
+              <div class="question" data-q="q13" data-type="text">
+                <div class="question__head">
+                  <span class="qnum">13</span>
+                  <div>
+                    <h3 class="question__label" id="q13label">What would you like to see first when opening your management dashboard?</h3>
+                    <p class="question__hint">The number, chart or alert you'd check every morning.</p>
+                  </div>
+                </div>
+                <textarea name="q13" rows="3" placeholder="e.g. Today's sales, cash on hand, and unpaid balances…" aria-labelledby="q13label" maxlength="4000"></textarea>
+              </div>
+
+              <div class="question" data-q="q14" data-type="rank">
+                <div class="question__head">
+                  <span class="qnum">14</span>
+                  <div>
+                    <h3 class="question__label" id="q14label">Which system should we prioritize?</h3>
+                    <p class="question__hint">Rank your top three — click in order of priority.</p>
+                  </div>
+                </div>
+                <input type="hidden" name="q14" id="q14Value" value="">
+                <div class="rank-grid" role="group" aria-labelledby="q14label" id="rankGrid">
+                  <button type="button" class="rank-option" data-value="Finance &amp; Accounting">
+                    <span class="rank-badge" aria-hidden="true">·</span>
+                    <span class="rank-option__body">
+                      <span class="rank-option__text">Finance &amp; Accounting</span>
+                      <span class="rank-option__desc">Income, expenses, profit, cash</span>
+                    </span>
+                    <span class="rank-option__state">Select</span>
+                  </button>
+                  <button type="button" class="rank-option" data-value="Cash Register / POS">
+                    <span class="rank-badge" aria-hidden="true">·</span>
+                    <span class="rank-option__body">
+                      <span class="rank-option__text">Cash Register / POS</span>
+                      <span class="rank-option__desc">Fast checkout and daily sales</span>
+                    </span>
+                    <span class="rank-option__state">Select</span>
+                  </button>
+                  <button type="button" class="rank-option" data-value="Stock &amp; Inventory">
+                    <span class="rank-badge" aria-hidden="true">·</span>
+                    <span class="rank-option__body">
+                      <span class="rank-option__text">Stock &amp; Inventory</span>
+                      <span class="rank-option__desc">Stock levels, alerts, reorders</span>
+                    </span>
+                    <span class="rank-option__state">Select</span>
+                  </button>
+                  <button type="button" class="rank-option" data-value="Customer Management">
+                    <span class="rank-badge" aria-hidden="true">·</span>
+                    <span class="rank-option__body">
+                      <span class="rank-option__text">Customer Management</span>
+                      <span class="rank-option__desc">Contacts, balances, follow-ups</span>
+                    </span>
+                    <span class="rank-option__state">Select</span>
+                  </button>
+                  <button type="button" class="rank-option" data-value="Website &amp; Online Sales">
+                    <span class="rank-badge" aria-hidden="true">·</span>
+                    <span class="rank-option__body">
+                      <span class="rank-option__text">Website &amp; Online Sales</span>
+                      <span class="rank-option__desc">Online catalogue and orders</span>
+                    </span>
+                    <span class="rank-option__state">Select</span>
+                  </button>
+                  <button type="button" class="rank-option" data-value="Business Analytics &amp; AI Reports">
+                    <span class="rank-badge" aria-hidden="true">·</span>
+                    <span class="rank-option__body">
+                      <span class="rank-option__text">Business Analytics &amp; AI Reports</span>
+                      <span class="rank-option__desc">Trends, forecasts, monthly summaries</span>
+                    </span>
+                    <span class="rank-option__state">Select</span>
+                  </button>
+                </div>
+                <p class="rank-help" id="rankHelp">Your first pick = priority 1. Click a selected item to remove it.</p>
+              </div>
+
+              <div class="question" data-q="q15" data-type="multi">
+                <div class="question__head">
+                  <span class="qnum">15</span>
+                  <div>
+                    <h3 class="question__label" id="q15label">Which software or files should the new system connect to?</h3>
+                    <p class="question__hint">Select all that apply — we'll ask for details later if needed.</p>
+                  </div>
+                </div>
+                <div class="options" role="group" aria-labelledby="q15label">
+                  <label class="option">
+                    <input type="checkbox" name="q15" value="Excel / Google Sheets">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Excel / Google Sheets</span>
+                  </label>
+                  <label class="option">
+                    <input type="checkbox" name="q15" value="Accounting software">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Accounting software</span>
+                  </label>
+                  <label class="option">
+                    <input type="checkbox" name="q15" value="POS / cash register">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">POS / cash register</span>
+                  </label>
+                  <label class="option">
+                    <input type="checkbox" name="q15" value="Online store (Shopify, WooCommerce…)">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Online store (Shopify, WooCommerce…)</span>
+                  </label>
+                  <label class="option">
+                    <input type="checkbox" name="q15" value="WhatsApp / phone orders">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">WhatsApp / phone orders</span>
+                  </label>
+                  <label class="option">
+                    <input type="checkbox" name="q15" value="Instagram / social media">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Instagram / social media</span>
+                  </label>
+                  <label class="option">
+                    <input type="checkbox" name="q15" value="Supplier invoices or statements">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Supplier invoices or statements</span>
+                  </label>
+                  <label class="option">
+                    <input type="checkbox" name="q15" value="None yet — mostly manual">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">None yet — mostly manual</span>
+                  </label>
+                  <div class="option option--other">
+                    <label class="option__main">
+                      <input type="checkbox" name="q15" value="Other">
+                      <span class="option__control" aria-hidden="true"></span>
+                      <span class="option__text">Other</span>
+                    </label>
+                    <input class="option__input" type="text" name="q15_other" placeholder="Please specify…" aria-label="Other — please specify" maxlength="500" tabindex="-1">
+                  </div>
+                </div>
+              </div>
+
+              <div class="question question--comments" data-q="comments" data-type="text">
+                <div class="question__head">
+                  <span class="qnum qnum--spark"><svg class="icon" aria-hidden="true"><use href="#i-spark"/></svg></span>
+                  <div>
+                    <h3 class="question__label" id="commentsLabel">Additional comments or ideas</h3>
+                    <p class="question__hint">Anything else we should know? Optional.</p>
+                  </div>
+                </div>
+                <textarea name="comments" rows="4" placeholder="Your thoughts…" aria-labelledby="commentsLabel" maxlength="4000"></textarea>
+              </div>
+
+              <div class="question" data-q="q16" data-type="single">
+                <div class="question__head">
+                  <span class="qnum">16</span>
+                  <div>
+                    <h3 class="question__label" id="q16label">Which language should we build the system in?</h3>
+                    <p class="question__hint">This shapes the interface and the AI answers you'll read every day.</p>
+                  </div>
+                </div>
+                <div class="options" role="radiogroup" aria-labelledby="q16label">
+                  <label class="option option--radio">
+                    <input type="radio" name="q16" value="English">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">English</span>
+                  </label>
+                  <label class="option option--radio">
+                    <input type="radio" name="q16" value="French">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">French</span>
+                  </label>
+                  <label class="option option--radio">
+                    <input type="radio" name="q16" value="Arabic">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Arabic</span>
+                  </label>
+                  <label class="option option--radio">
+                    <input type="radio" name="q16" value="English and French">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">English and French</span>
+                  </label>
+                  <label class="option option--radio">
+                    <input type="radio" name="q16" value="Other / mixed">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Other / mixed</span>
+                  </label>
+                </div>
+              </div>
+            </section>
+
+            <!-- ---------------- REVIEW ---------------- -->
+            <section class="step step--review" data-step="6" aria-labelledby="reviewTitle" hidden>
+              <header class="section-head">
+                <p class="section-kicker">Final step <span aria-hidden="true">·</span> Review</p>
+                <h2 id="reviewTitle" tabindex="-1">One last look.</h2>
+                <p>Check your answers, edit anything that needs it, then send them to the team.</p>
+              </header>
+              <div id="reviewContent"></div>
+              <p class="submit-error" id="submitError" role="alert" hidden>
+                Please answer at least one question before sending — even a short note helps.
+              </p>
+              <p class="review-note">
+                <svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg>
+                Your answers go directly to the Verdara Intelligence team and are used only to shape this project.
+              </p>
+            </section>
+
+            <!-- honeypot -->
+            <div class="hp" aria-hidden="true">
+              <label>Company website<input type="text" name="company_website" tabindex="-1" autocomplete="off"></label>
+            </div>
+
+            <div class="form-nav" id="formNav">
+              <button type="button" class="btn btn--ghost" id="btnBack">
+                <svg class="icon" aria-hidden="true"><use href="#i-back"/></svg>
+                <span>Back</span>
+              </button>
+              <div class="form-nav__right">
+                <span class="form-nav__hint" id="navHint">Takes about 10–15 minutes in total</span>
+                <button type="button" class="btn btn--primary" id="btnNext">
+                  <span id="btnNextLabel">Continue</span>
+                  <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <p class="form-footnote">Verdara Intelligence · Discovery questionnaire · Verdara Home</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ SUCCESS ============================ -->
+    <section class="view view--success" id="viewSuccess" aria-labelledby="successTitle" hidden>
+      <div class="success-card">
+        <div class="success-mark" aria-hidden="true">
+          <svg class="icon"><use href="#i-check"/></svg>
+        </div>
+        <p class="eyebrow eyebrow--center">Answers received</p>
+        <h2 id="successTitle">Thank you<span id="successName"></span>.</h2>
+        <p class="success-lede">Your answers are with the Verdara Intelligence team. They'll shape what we build first — and what we leave out.</p>
+
+        <div class="success-summary" id="successSummary" hidden>
+          <span class="success-summary__label">Your top priorities</span>
+          <div class="success-summary__chips" id="successChips"></div>
+        </div>
+
+        <p class="success-id" id="successId" hidden></p>
+
+        <div class="success-actions">
+          <button type="button" class="btn btn--primary" id="btnDownload">
+            <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
+            Download a copy
+          </button>
+          <button type="button" class="btn btn--ghost" id="btnPrint">
+            <svg class="icon" aria-hidden="true"><use href="#i-print"/></svg>
+            Print / save as PDF
+          </button>
+        </div>
+        <button type="button" class="link-btn" id="btnRestart">Start another response</button>
+      </div>
+    </section>
+
+    <!-- ============================ OFFLINE ============================ -->
+    <section class="view view--success" id="viewOffline" aria-labelledby="offlineTitle" hidden>
+      <div class="success-card success-card--warn">
+        <div class="success-mark success-mark--warn" aria-hidden="true">
+          <svg class="icon"><use href="#i-refresh"/></svg>
+        </div>
+        <p class="eyebrow eyebrow--center">Connection issue</p>
+        <h2 id="offlineTitle">Almost there.</h2>
+        <p class="success-lede">We couldn't reach the server, so your answers are safely saved on this device. Download a copy and send it to the team — or try again.</p>
+        <div class="success-actions">
+          <button type="button" class="btn btn--primary" id="btnRetry">
+            <svg class="icon" aria-hidden="true"><use href="#i-refresh"/></svg>
+            Try again
+          </button>
+          <button type="button" class="btn btn--ghost" id="btnDownloadOffline">
+            <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
+            Download answers
+          </button>
+        </div>
+        <p class="offline-help">Send the downloaded file to <strong id="offlineEmail">the Verdara Intelligence team</strong>. Nothing has been lost.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <span>© <span id="year">2026</span> Verdara Intelligence</span>
+      <span class="site-footer__dot" aria-hidden="true">·</span>
+      <span>Verdara Home discovery</span>
+      <span class="site-footer__spacer"></span>
+      <span>Responses kept private</span>
+    </div>
+  </footer>
+
+  <noscript>
+    <div class="noscript">This questionnaire needs JavaScript enabled. Please open it in a modern browser.</div>
+  </noscript>
+
+</body>
+</html>
