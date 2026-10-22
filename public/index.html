@@ -244,96 +244,113 @@
                 </div>
               </div>
 
-              <div class="question" data-q="q2" data-type="text">
+              <div class="question" data-q="q2" data-type="multi">
                 <div class="question__head">
                   <span class="qnum">02</span>
                   <div>
-                    <h3 class="question__label" id="q2label">Where does your product and stock information live today?</h3>
-                    <p class="question__hint">Files, notebooks, software, WhatsApp — plus a rough product count if you know it.</p>
+                    <h3 class="question__label" id="q2label">How do customers usually pay you?</h3>
+                    <p class="question__hint">Select all that apply — this tells us what the finance module must handle.</p>
                   </div>
                 </div>
-                <textarea name="q2" rows="3" placeholder="e.g. An Excel file with about 300 products…" aria-labelledby="q2label" maxlength="4000"></textarea>
+                <div class="options" role="group" aria-labelledby="q2label">
+                  <label class="option">
+                    <input type="checkbox" name="q2" value="Cash">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Cash</span>
+                  </label>
+                  <label class="option">
+                    <input type="checkbox" name="q2" value="Card / bank terminal">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Card / bank terminal</span>
+                  </label>
+                  <label class="option">
+                    <input type="checkbox" name="q2" value="Bank transfer">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Bank transfer</span>
+                  </label>
+                  <label class="option">
+                    <input type="checkbox" name="q2" value="Deposit then balance later">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Deposit then balance later</span>
+                  </label>
+                  <label class="option">
+                    <input type="checkbox" name="q2" value="Customer credit / pay later">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Customer credit / pay later</span>
+                  </label>
+                  <label class="option">
+                    <input type="checkbox" name="q2" value="Online payment (card link, PayPal…)">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Online payment (card link, PayPal…)</span>
+                  </label>
+                  <div class="option option--other">
+                    <label class="option__main">
+                      <input type="checkbox" name="q2" value="Other">
+                      <span class="option__control" aria-hidden="true"></span>
+                      <span class="option__text">Other</span>
+                    </label>
+                    <input class="option__input" type="text" name="q2_other" placeholder="Please specify…" aria-label="Other — please specify" maxlength="500" tabindex="-1">
+                  </div>
+                </div>
               </div>
 
-              <div class="question" data-q="q3" data-type="text">
+              <div class="question" data-q="q3" data-type="single">
                 <div class="question__head">
                   <span class="qnum">03</span>
                   <div>
-                    <h3 class="question__label" id="q3label">What are the biggest difficulties you face when managing the business?</h3>
-                    <p class="question__hint">The things that cost you time, money or peace of mind — and roughly how often they happen.</p>
+                    <h3 class="question__label" id="q3label">Roughly how many different products do you sell?</h3>
+                    <p class="question__hint">A range is enough — it tells us whether you need a simple list or a full inventory.</p>
                   </div>
                 </div>
-                <textarea name="q3" rows="4" placeholder="Tell us what gets in the way…" aria-labelledby="q3label" maxlength="4000"></textarea>
+                <div class="options" role="radiogroup" aria-labelledby="q3label">
+                  <label class="option option--radio">
+                    <input type="radio" name="q3" value="Under 100 products">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Under 100 products</span>
+                  </label>
+                  <label class="option option--radio">
+                    <input type="radio" name="q3" value="100–500 products">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">100–500 products</span>
+                  </label>
+                  <label class="option option--radio">
+                    <input type="radio" name="q3" value="500–2,000 products">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">500–2,000 products</span>
+                  </label>
+                  <label class="option option--radio">
+                    <input type="radio" name="q3" value="Over 2,000 products">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Over 2,000 products</span>
+                  </label>
+                  <label class="option option--radio">
+                    <input type="radio" name="q3" value="Not sure">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Not sure</span>
+                  </label>
+                </div>
               </div>
-            </section>
-
-            <!-- ---------------- STEP 2 ---------------- -->
-            <section class="step" data-step="2" aria-labelledby="s2title" hidden>
-              <header class="section-head">
-                <p class="section-kicker">Section 02 <span aria-hidden="true">·</span> Finance</p>
-                <h2 id="s2title" tabindex="-1">Finance &amp; accounting</h2>
-                <p>How money is tracked, reported and reviewed today.</p>
-              </header>
 
               <div class="question" data-q="q4" data-type="text">
                 <div class="question__head">
                   <span class="qnum">04</span>
                   <div>
-                    <h3 class="question__label" id="q4label">How do you track income, expenses and cash — and who prepares the books?</h3>
-                    <p class="question__hint">Include the tools, sheets or people involved, and how often they're reviewed.</p>
+                    <h3 class="question__label" id="q4label">Where does your product and stock information live today?</h3>
+                    <p class="question__hint">Files, notebooks, software, WhatsApp — wherever it actually lives.</p>
                   </div>
                 </div>
-                <textarea name="q4" rows="4" placeholder="e.g. Sales in a notebook, expenses in Excel, accountant reviews monthly…" aria-labelledby="q4label" maxlength="4000"></textarea>
+                <textarea name="q4" rows="3" placeholder="e.g. An Excel file, plus a notebook in the shop…" aria-labelledby="q4label" maxlength="4000"></textarea>
               </div>
 
-              <div class="question" data-q="q5" data-type="multi">
+              <div class="question" data-q="q5" data-type="text">
                 <div class="question__head">
                   <span class="qnum">05</span>
                   <div>
-                    <h3 class="question__label" id="q5label">Which financial information would you like to see instantly?</h3>
-                    <p class="question__hint">Select all that apply.</p>
+                    <h3 class="question__label" id="q5label">What are the biggest difficulties you face when managing the business?</h3>
+                    <p class="question__hint">The things that cost you time, money or peace of mind — and roughly how often they happen.</p>
                   </div>
                 </div>
-                <div class="options" role="group" aria-labelledby="q5label">
-                  <label class="option">
-                    <input type="checkbox" name="q5" value="Daily / Monthly sales">
-                    <span class="option__control" aria-hidden="true"></span>
-                    <span class="option__text">Daily / Monthly sales</span>
-                  </label>
-                  <label class="option">
-                    <input type="checkbox" name="q5" value="Expenses">
-                    <span class="option__control" aria-hidden="true"></span>
-                    <span class="option__text">Expenses</span>
-                  </label>
-                  <label class="option">
-                    <input type="checkbox" name="q5" value="Profit and profit margins">
-                    <span class="option__control" aria-hidden="true"></span>
-                    <span class="option__text">Profit and profit margins</span>
-                  </label>
-                  <label class="option">
-                    <input type="checkbox" name="q5" value="Cash available">
-                    <span class="option__control" aria-hidden="true"></span>
-                    <span class="option__text">Cash available</span>
-                  </label>
-                  <label class="option">
-                    <input type="checkbox" name="q5" value="Customer payments and unpaid balances">
-                    <span class="option__control" aria-hidden="true"></span>
-                    <span class="option__text">Customer payments and unpaid balances</span>
-                  </label>
-                  <label class="option">
-                    <input type="checkbox" name="q5" value="Supplier payments and outstanding amounts">
-                    <span class="option__control" aria-hidden="true"></span>
-                    <span class="option__text">Supplier payments and outstanding amounts</span>
-                  </label>
-                  <div class="option option--other">
-                    <label class="option__main">
-                      <input type="checkbox" name="q5" value="Other">
-                      <span class="option__control" aria-hidden="true"></span>
-                      <span class="option__text">Other</span>
-                    </label>
-                    <input class="option__input" type="text" name="q5_other" placeholder="Please specify…" aria-label="Other — please specify" maxlength="500" tabindex="-1">
-                  </div>
-                </div>
+                <textarea name="q5" rows="4" placeholder="Tell us what gets in the way…" aria-labelledby="q5label" maxlength="4000"></textarea>
               </div>
 
               <div class="question" data-q="q6" data-type="single">
@@ -374,6 +391,113 @@
               </div>
             </section>
 
+            <!-- ---------------- STEP 2 ---------------- -->
+            <section class="step" data-step="2" aria-labelledby="s2title" hidden>
+              <header class="section-head">
+                <p class="section-kicker">Section 02 <span aria-hidden="true">·</span> Finance</p>
+                <h2 id="s2title" tabindex="-1">Finance &amp; accounting</h2>
+                <p>How money is tracked, reported and reviewed today.</p>
+              </header>
+
+              <div class="question" data-q="q7" data-type="text">
+                <div class="question__head">
+                  <span class="qnum">07</span>
+                  <div>
+                    <h3 class="question__label" id="q7label">How do you track income, expenses and cash today?</h3>
+                    <p class="question__hint">Include the tools, sheets or people involved, and how often it's reviewed.</p>
+                  </div>
+                </div>
+                <textarea name="q7" rows="4" placeholder="e.g. Sales in a notebook, expenses in Excel, checked weekly…" aria-labelledby="q7label" maxlength="4000"></textarea>
+              </div>
+
+              <div class="question" data-q="q8" data-type="single">
+                <div class="question__head">
+                  <span class="qnum">08</span>
+                  <div>
+                    <h3 class="question__label" id="q8label">Who keeps the books and prepares the financial reporting?</h3>
+                    <p class="question__hint">An internal person, an external accountant, or a mix.</p>
+                  </div>
+                </div>
+                <div class="options" role="radiogroup" aria-labelledby="q8label">
+                  <label class="option option--radio">
+                    <input type="radio" name="q8" value="We do it ourselves">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">We do it ourselves</span>
+                  </label>
+                  <label class="option option--radio">
+                    <input type="radio" name="q8" value="An internal employee handles it">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">An internal employee handles it</span>
+                  </label>
+                  <label class="option option--radio">
+                    <input type="radio" name="q8" value="An external accountant">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">An external accountant</span>
+                  </label>
+                  <label class="option option--radio">
+                    <input type="radio" name="q8" value="Accountant plus internal help">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Accountant plus internal help</span>
+                  </label>
+                  <label class="option option--radio">
+                    <input type="radio" name="q8" value="Nobody formally — it's informal">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Nobody formally — it's informal</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="question" data-q="q9" data-type="multi">
+                <div class="question__head">
+                  <span class="qnum">09</span>
+                  <div>
+                    <h3 class="question__label" id="q9label">Which financial information would you like to see instantly?</h3>
+                    <p class="question__hint">Select all that apply.</p>
+                  </div>
+                </div>
+                <div class="options" role="group" aria-labelledby="q9label">
+                  <label class="option">
+                    <input type="checkbox" name="q9" value="Daily / Monthly sales">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Daily / Monthly sales</span>
+                  </label>
+                  <label class="option">
+                    <input type="checkbox" name="q9" value="Expenses">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Expenses</span>
+                  </label>
+                  <label class="option">
+                    <input type="checkbox" name="q9" value="Profit and profit margins">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Profit and profit margins</span>
+                  </label>
+                  <label class="option">
+                    <input type="checkbox" name="q9" value="Cash available">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Cash available</span>
+                  </label>
+                  <label class="option">
+                    <input type="checkbox" name="q9" value="Customer payments and unpaid balances">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Customer payments and unpaid balances</span>
+                  </label>
+                  <label class="option">
+                    <input type="checkbox" name="q9" value="Supplier payments and outstanding amounts">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Supplier payments and outstanding amounts</span>
+                  </label>
+                  <div class="option option--other">
+                    <label class="option__main">
+                      <input type="checkbox" name="q9" value="Other">
+                      <span class="option__control" aria-hidden="true"></span>
+                      <span class="option__text">Other</span>
+                    </label>
+                    <input class="option__input" type="text" name="q9_other" placeholder="Please specify…" aria-label="Other — please specify" maxlength="500" tabindex="-1">
+                  </div>
+                </div>
+              </div>
+            </section>
+
             <!-- ---------------- STEP 3 ---------------- -->
             <section class="step" data-step="3" aria-labelledby="s3title" hidden>
               <header class="section-head">
@@ -382,71 +506,71 @@
                 <p>How you keep track of products, orders and payments.</p>
               </header>
 
-              <div class="question" data-q="q7" data-type="text">
+              <div class="question" data-q="q10" data-type="text">
                 <div class="question__head">
-                  <span class="qnum">07</span>
+                  <span class="qnum">10</span>
                   <div>
-                    <h3 class="question__label" id="q7label">How do you currently know whether a product is in stock?</h3>
+                    <h3 class="question__label" id="q10label">How do you currently know whether a product is in stock?</h3>
                     <p class="question__hint">Walk us through how you check.</p>
                   </div>
                 </div>
-                <textarea name="q7" rows="3" placeholder="e.g. We check the shelf, then call the stockroom…" aria-labelledby="q7label" maxlength="4000"></textarea>
+                <textarea name="q10" rows="3" placeholder="e.g. We check the shelf, then call the stockroom…" aria-labelledby="q10label" maxlength="4000"></textarea>
               </div>
 
-              <div class="question" data-q="q8" data-type="multi">
+              <div class="question" data-q="q11" data-type="multi">
                 <div class="question__head">
-                  <span class="qnum">08</span>
+                  <span class="qnum">11</span>
                   <div>
-                    <h3 class="question__label" id="q8label">Which stock-related problems would you most like to solve?</h3>
+                    <h3 class="question__label" id="q11label">Which stock-related problems would you most like to solve?</h3>
                     <p class="question__hint">Select all that apply.</p>
                   </div>
                 </div>
-                <div class="options" role="group" aria-labelledby="q8label">
+                <div class="options" role="group" aria-labelledby="q11label">
                   <label class="option">
-                    <input type="checkbox" name="q8" value="Products running out of stock">
+                    <input type="checkbox" name="q11" value="Products running out of stock">
                     <span class="option__control" aria-hidden="true"></span>
                     <span class="option__text">Products running out of stock</span>
                   </label>
                   <label class="option">
-                    <input type="checkbox" name="q8" value="Products remaining unsold for too long">
+                    <input type="checkbox" name="q11" value="Products remaining unsold for too long">
                     <span class="option__control" aria-hidden="true"></span>
                     <span class="option__text">Products remaining unsold for too long</span>
                   </label>
                   <label class="option">
-                    <input type="checkbox" name="q8" value="Stock discrepancies">
+                    <input type="checkbox" name="q11" value="Stock discrepancies">
                     <span class="option__control" aria-hidden="true"></span>
                     <span class="option__text">Stock discrepancies</span>
                   </label>
                   <label class="option">
-                    <input type="checkbox" name="q8" value="Difficulty finding product information">
+                    <input type="checkbox" name="q11" value="Difficulty finding product information">
                     <span class="option__control" aria-hidden="true"></span>
                     <span class="option__text">Difficulty finding product information</span>
                   </label>
                   <label class="option">
-                    <input type="checkbox" name="q8" value="Tracking stock across online and offline sales">
+                    <input type="checkbox" name="q11" value="Tracking stock across online and offline sales">
                     <span class="option__control" aria-hidden="true"></span>
                     <span class="option__text">Tracking stock across online and offline sales</span>
                   </label>
                   <div class="option option--other">
                     <label class="option__main">
-                      <input type="checkbox" name="q8" value="Other">
+                      <input type="checkbox" name="q11" value="Other">
                       <span class="option__control" aria-hidden="true"></span>
                       <span class="option__text">Other</span>
                     </label>
-                    <input class="option__input" type="text" name="q8_other" placeholder="Please specify…" aria-label="Other — please specify" maxlength="500" tabindex="-1">
+                    <input class="option__input" type="text" name="q11_other" placeholder="Please specify…" aria-label="Other — please specify" maxlength="500" tabindex="-1">
                   </div>
                 </div>
               </div>
 
-              <div class="question" data-q="q9" data-type="text">
+              <div class="question" data-q="q12" data-type="text">
                 <div class="question__head">
-                  <span class="qnum">09</span>
+                  <span class="qnum">12</span>
                   <div>
-                    <h3 class="question__label" id="q9label">How do you currently track customer orders, deposits, and remaining payments?</h3>
+                    <h3 class="question__label" id="q12label">How do you currently track customer orders, deposits, and remaining payments?</h3>
                     <p class="question__hint">Especially for custom or delivered orders.</p>
                   </div>
                 </div>
-                <textarea name="q9" rows="3" placeholder="e.g. Order book with deposit and balance columns…" aria-labelledby="q9label" maxlength="4000"></textarea>
+                <textarea name="q12" rows="3" placeholder="e.g. Order book with deposit and balance columns…" aria-labelledby="q12label" maxlength="4000"></textarea>
               </div>
             </section>
 
@@ -458,102 +582,112 @@
                 <p>Where AI could genuinely save you time.</p>
               </header>
 
-              <div class="question" data-q="q10" data-type="multi">
+              <div class="question" data-q="q13" data-type="multi">
                 <div class="question__head">
-                  <span class="qnum">10</span>
+                  <span class="qnum">13</span>
                   <div>
-                    <h3 class="question__label" id="q10label">Which tasks would you most like AI to handle?</h3>
+                    <h3 class="question__label" id="q13label">Which tasks would you most like AI to handle?</h3>
                     <p class="question__hint">Select all that apply — the repetitive work you'd happily hand over.</p>
                   </div>
                 </div>
-                <div class="options" role="group" aria-labelledby="q10label">
+                <div class="options" role="group" aria-labelledby="q13label">
                   <label class="option">
-                    <input type="checkbox" name="q10" value="Reconcile daily sales with cash collected">
+                    <input type="checkbox" name="q13" value="Reconcile daily sales with cash collected">
                     <span class="option__control" aria-hidden="true"></span>
                     <span class="option__text">Reconcile daily sales with cash collected</span>
                   </label>
                   <label class="option">
-                    <input type="checkbox" name="q10" value="Flag products that are running low">
+                    <input type="checkbox" name="q13" value="Flag products that are running low">
                     <span class="option__control" aria-hidden="true"></span>
                     <span class="option__text">Flag products that are running low</span>
                   </label>
                   <label class="option">
-                    <input type="checkbox" name="q10" value="Categorise expenses">
+                    <input type="checkbox" name="q13" value="Categorise expenses">
                     <span class="option__control" aria-hidden="true"></span>
                     <span class="option__text">Categorise expenses</span>
                   </label>
                   <label class="option">
-                    <input type="checkbox" name="q10" value="Prepare the monthly summary">
+                    <input type="checkbox" name="q13" value="Detect unusual expenses or possible errors">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Detect unusual expenses or possible errors</span>
+                  </label>
+                  <label class="option">
+                    <input type="checkbox" name="q13" value="Prepare the monthly summary">
                     <span class="option__control" aria-hidden="true"></span>
                     <span class="option__text">Prepare the monthly summary</span>
                   </label>
                   <label class="option">
-                    <input type="checkbox" name="q10" value="Follow up on unpaid customer balances">
+                    <input type="checkbox" name="q13" value="Follow up on unpaid customer balances">
                     <span class="option__control" aria-hidden="true"></span>
                     <span class="option__text">Follow up on unpaid customer balances</span>
                   </label>
                   <label class="option">
-                    <input type="checkbox" name="q10" value="Suggest what to reorder from suppliers">
+                    <input type="checkbox" name="q13" value="Draft replies to customer messages">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Draft replies to customer messages</span>
+                  </label>
+                  <label class="option">
+                    <input type="checkbox" name="q13" value="Suggest what to reorder from suppliers">
                     <span class="option__control" aria-hidden="true"></span>
                     <span class="option__text">Suggest what to reorder from suppliers</span>
                   </label>
                   <label class="option">
-                    <input type="checkbox" name="q10" value="Answer questions about the business">
+                    <input type="checkbox" name="q13" value="Answer questions about the business">
                     <span class="option__control" aria-hidden="true"></span>
                     <span class="option__text">Answer questions about the business</span>
                   </label>
                   <div class="option option--other">
                     <label class="option__main">
-                      <input type="checkbox" name="q10" value="Other">
+                      <input type="checkbox" name="q13" value="Other">
                       <span class="option__control" aria-hidden="true"></span>
                       <span class="option__text">Other</span>
                     </label>
-                    <input class="option__input" type="text" name="q10_other" placeholder="Please specify…" aria-label="Other — please specify" maxlength="500" tabindex="-1">
+                    <input class="option__input" type="text" name="q13_other" placeholder="Please specify…" aria-label="Other — please specify" maxlength="500" tabindex="-1">
                   </div>
                 </div>
               </div>
 
-              <div class="question" data-q="q11" data-type="single">
+              <div class="question" data-q="q14" data-type="single">
                 <div class="question__head">
-                  <span class="qnum">11</span>
+                  <span class="qnum">14</span>
                   <div>
-                    <h3 class="question__label" id="q11label">How much control should AI have?</h3>
+                    <h3 class="question__label" id="q14label">How much control should AI have?</h3>
                     <p class="question__hint">Choose the level you're comfortable with today.</p>
                   </div>
                 </div>
-                <div class="options" role="radiogroup" aria-labelledby="q11label">
+                <div class="options" role="radiogroup" aria-labelledby="q14label">
                   <label class="option option--radio">
-                    <input type="radio" name="q11" value="Only answer questions and provide reports">
+                    <input type="radio" name="q14" value="Only answer questions and provide reports">
                     <span class="option__control" aria-hidden="true"></span>
                     <span class="option__text">Only answer questions and provide reports</span>
                   </label>
                   <label class="option option--radio">
-                    <input type="radio" name="q11" value="Suggest actions for us to approve">
+                    <input type="radio" name="q14" value="Suggest actions for us to approve">
                     <span class="option__control" aria-hidden="true"></span>
                     <span class="option__text">Suggest actions for us to approve</span>
                   </label>
                   <label class="option option--radio">
-                    <input type="radio" name="q11" value="Perform selected routine tasks automatically">
+                    <input type="radio" name="q14" value="Perform selected routine tasks automatically">
                     <span class="option__control" aria-hidden="true"></span>
                     <span class="option__text">Perform selected routine tasks automatically</span>
                   </label>
                   <label class="option option--radio">
-                    <input type="radio" name="q11" value="Not sure yet">
+                    <input type="radio" name="q14" value="Not sure yet">
                     <span class="option__control" aria-hidden="true"></span>
                     <span class="option__text">Not sure yet</span>
                   </label>
                 </div>
               </div>
 
-              <div class="question" data-q="q12" data-type="text">
+              <div class="question" data-q="q15" data-type="text">
                 <div class="question__head">
-                  <span class="qnum">12</span>
+                  <span class="qnum">15</span>
                   <div>
-                    <h3 class="question__label" id="q12label">What would make this system truly valuable — and what would stop you from using it?</h3>
+                    <h3 class="question__label" id="q15label">What would make this system truly valuable — and what would stop you from using it?</h3>
                     <p class="question__hint">Think about trust, cost, training, internet reliability or language. One thing each is enough.</p>
                   </div>
                 </div>
-                <textarea name="q12" rows="4" placeholder="What success looks like — and what could get in the way…" aria-labelledby="q12label" maxlength="4000"></textarea>
+                <textarea name="q15" rows="4" placeholder="What success looks like — and what could get in the way…" aria-labelledby="q15label" maxlength="4000"></textarea>
               </div>
             </section>
 
@@ -565,27 +699,27 @@
                 <p>What you want to see first — and what we should build first.</p>
               </header>
 
-              <div class="question" data-q="q13" data-type="text">
+              <div class="question" data-q="q16" data-type="text">
                 <div class="question__head">
-                  <span class="qnum">13</span>
+                  <span class="qnum">16</span>
                   <div>
-                    <h3 class="question__label" id="q13label">What would you like to see first when opening your management dashboard?</h3>
+                    <h3 class="question__label" id="q16label">What would you like to see first when opening your management dashboard?</h3>
                     <p class="question__hint">The number, chart or alert you'd check every morning.</p>
                   </div>
                 </div>
-                <textarea name="q13" rows="3" placeholder="e.g. Today's sales, cash on hand, and unpaid balances…" aria-labelledby="q13label" maxlength="4000"></textarea>
+                <textarea name="q16" rows="3" placeholder="e.g. Today's sales, cash on hand, and unpaid balances…" aria-labelledby="q16label" maxlength="4000"></textarea>
               </div>
 
-              <div class="question" data-q="q14" data-type="rank">
+              <div class="question" data-q="q17" data-type="rank">
                 <div class="question__head">
-                  <span class="qnum">14</span>
+                  <span class="qnum">17</span>
                   <div>
-                    <h3 class="question__label" id="q14label">Which system should we prioritize?</h3>
+                    <h3 class="question__label" id="q17label">Which system should we prioritize?</h3>
                     <p class="question__hint">Rank your top three — click in order of priority.</p>
                   </div>
                 </div>
-                <input type="hidden" name="q14" id="q14Value" value="">
-                <div class="rank-grid" role="group" aria-labelledby="q14label" id="rankGrid">
+                <input type="hidden" name="q17" id="q17Value" value="">
+                <div class="rank-grid" role="group" aria-labelledby="q17label" id="rankGrid">
                   <button type="button" class="rank-option" data-value="Finance &amp; Accounting">
                     <span class="rank-badge" aria-hidden="true">·</span>
                     <span class="rank-option__body">
@@ -638,63 +772,100 @@
                 <p class="rank-help" id="rankHelp">Your first pick = priority 1. Click a selected item to remove it.</p>
               </div>
 
-              <div class="question" data-q="q15" data-type="multi">
+              <div class="question" data-q="q18" data-type="multi">
                 <div class="question__head">
-                  <span class="qnum">15</span>
+                  <span class="qnum">18</span>
                   <div>
-                    <h3 class="question__label" id="q15label">Which software or files should the new system connect to?</h3>
+                    <h3 class="question__label" id="q18label">Which software or files should the new system connect to?</h3>
                     <p class="question__hint">Select all that apply — we'll ask for details later if needed.</p>
                   </div>
                 </div>
-                <div class="options" role="group" aria-labelledby="q15label">
+                <div class="options" role="group" aria-labelledby="q18label">
                   <label class="option">
-                    <input type="checkbox" name="q15" value="Excel / Google Sheets">
+                    <input type="checkbox" name="q18" value="Excel / Google Sheets">
                     <span class="option__control" aria-hidden="true"></span>
                     <span class="option__text">Excel / Google Sheets</span>
                   </label>
                   <label class="option">
-                    <input type="checkbox" name="q15" value="Accounting software">
+                    <input type="checkbox" name="q18" value="Accounting software">
                     <span class="option__control" aria-hidden="true"></span>
                     <span class="option__text">Accounting software</span>
                   </label>
                   <label class="option">
-                    <input type="checkbox" name="q15" value="POS / cash register">
+                    <input type="checkbox" name="q18" value="POS / cash register">
                     <span class="option__control" aria-hidden="true"></span>
                     <span class="option__text">POS / cash register</span>
                   </label>
                   <label class="option">
-                    <input type="checkbox" name="q15" value="Online store (Shopify, WooCommerce…)">
+                    <input type="checkbox" name="q18" value="Online store (Shopify, WooCommerce…)">
                     <span class="option__control" aria-hidden="true"></span>
                     <span class="option__text">Online store (Shopify, WooCommerce…)</span>
                   </label>
                   <label class="option">
-                    <input type="checkbox" name="q15" value="WhatsApp / phone orders">
+                    <input type="checkbox" name="q18" value="WhatsApp / phone orders">
                     <span class="option__control" aria-hidden="true"></span>
                     <span class="option__text">WhatsApp / phone orders</span>
                   </label>
                   <label class="option">
-                    <input type="checkbox" name="q15" value="Instagram / social media">
+                    <input type="checkbox" name="q18" value="Instagram / social media">
                     <span class="option__control" aria-hidden="true"></span>
                     <span class="option__text">Instagram / social media</span>
                   </label>
                   <label class="option">
-                    <input type="checkbox" name="q15" value="Supplier invoices or statements">
+                    <input type="checkbox" name="q18" value="Supplier invoices or statements">
                     <span class="option__control" aria-hidden="true"></span>
                     <span class="option__text">Supplier invoices or statements</span>
                   </label>
                   <label class="option">
-                    <input type="checkbox" name="q15" value="None yet — mostly manual">
+                    <input type="checkbox" name="q18" value="None yet — mostly manual">
                     <span class="option__control" aria-hidden="true"></span>
                     <span class="option__text">None yet — mostly manual</span>
                   </label>
                   <div class="option option--other">
                     <label class="option__main">
-                      <input type="checkbox" name="q15" value="Other">
+                      <input type="checkbox" name="q18" value="Other">
                       <span class="option__control" aria-hidden="true"></span>
                       <span class="option__text">Other</span>
                     </label>
-                    <input class="option__input" type="text" name="q15_other" placeholder="Please specify…" aria-label="Other — please specify" maxlength="500" tabindex="-1">
+                    <input class="option__input" type="text" name="q18_other" placeholder="Please specify…" aria-label="Other — please specify" maxlength="500" tabindex="-1">
                   </div>
+                </div>
+              </div>
+
+              <div class="question" data-q="q19" data-type="single">
+                <div class="question__head">
+                  <span class="qnum">19</span>
+                  <div>
+                    <h3 class="question__label" id="q19label">Which language should we build the system in?</h3>
+                    <p class="question__hint">This shapes the interface and the AI answers you'll read every day.</p>
+                  </div>
+                </div>
+                <div class="options" role="radiogroup" aria-labelledby="q19label">
+                  <label class="option option--radio">
+                    <input type="radio" name="q19" value="English">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">English</span>
+                  </label>
+                  <label class="option option--radio">
+                    <input type="radio" name="q19" value="French">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">French</span>
+                  </label>
+                  <label class="option option--radio">
+                    <input type="radio" name="q19" value="Arabic">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Arabic</span>
+                  </label>
+                  <label class="option option--radio">
+                    <input type="radio" name="q19" value="English and French">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">English and French</span>
+                  </label>
+                  <label class="option option--radio">
+                    <input type="radio" name="q19" value="Other / mixed">
+                    <span class="option__control" aria-hidden="true"></span>
+                    <span class="option__text">Other / mixed</span>
+                  </label>
                 </div>
               </div>
 
@@ -707,43 +878,6 @@
                   </div>
                 </div>
                 <textarea name="comments" rows="4" placeholder="Your thoughts…" aria-labelledby="commentsLabel" maxlength="4000"></textarea>
-              </div>
-
-              <div class="question" data-q="q16" data-type="single">
-                <div class="question__head">
-                  <span class="qnum">16</span>
-                  <div>
-                    <h3 class="question__label" id="q16label">Which language should we build the system in?</h3>
-                    <p class="question__hint">This shapes the interface and the AI answers you'll read every day.</p>
-                  </div>
-                </div>
-                <div class="options" role="radiogroup" aria-labelledby="q16label">
-                  <label class="option option--radio">
-                    <input type="radio" name="q16" value="English">
-                    <span class="option__control" aria-hidden="true"></span>
-                    <span class="option__text">English</span>
-                  </label>
-                  <label class="option option--radio">
-                    <input type="radio" name="q16" value="French">
-                    <span class="option__control" aria-hidden="true"></span>
-                    <span class="option__text">French</span>
-                  </label>
-                  <label class="option option--radio">
-                    <input type="radio" name="q16" value="Arabic">
-                    <span class="option__control" aria-hidden="true"></span>
-                    <span class="option__text">Arabic</span>
-                  </label>
-                  <label class="option option--radio">
-                    <input type="radio" name="q16" value="English and French">
-                    <span class="option__control" aria-hidden="true"></span>
-                    <span class="option__text">English and French</span>
-                  </label>
-                  <label class="option option--radio">
-                    <input type="radio" name="q16" value="Other / mixed">
-                    <span class="option__control" aria-hidden="true"></span>
-                    <span class="option__text">Other / mixed</span>
-                  </label>
-                </div>
               </div>
             </section>
 

@@ -10,41 +10,44 @@
       title: 'Current business operations',
       items: [
         ['q1', '1. How a sale is recorded'],
-        ['q2', '2. Where product and stock info lives'],
-        ['q3', '3. Biggest difficulties']
+        ['q2', '2. How customers pay'],
+        ['q3', '3. Number of products sold'],
+        ['q4', '4. Where product and stock info lives'],
+        ['q5', '5. Biggest difficulties'],
+        ['q6', '6. Sales or orders per day']
       ]
     },
     {
       title: 'Finance & accounting',
       items: [
-        ['q4', '4. Tracking income, expenses and cash'],
-        ['q5', '5. Financial information wanted instantly'],
-        ['q6', '6. Sales or orders per day']
+        ['q7', '7. Tracking income, expenses and cash'],
+        ['q8', '8. Who keeps the books'],
+        ['q9', '9. Financial information wanted instantly']
       ]
     },
     {
       title: 'Stock & physical store',
       items: [
-        ['q7', '7. Knowing stock availability'],
-        ['q8', '8. Stock problems to solve'],
-        ['q9', '9. Orders, deposits and balances']
+        ['q10', '10. Knowing stock availability'],
+        ['q11', '11. Stock problems to solve'],
+        ['q12', '12. Orders, deposits and balances']
       ]
     },
     {
       title: 'AI agents & automation',
       items: [
-        ['q10', '10. Tasks wanted from AI'],
-        ['q11', '11. AI control level'],
-        ['q12', '12. Value and adoption blockers']
+        ['q13', '13. Tasks wanted from AI'],
+        ['q14', '14. AI control level'],
+        ['q15', '15. Value and adoption blockers']
       ]
     },
     {
       title: 'Dashboard & priorities',
       items: [
-        ['q13', '13. First dashboard view'],
-        ['q14', '14. Top three priorities'],
-        ['q15', '15. Software or files to connect'],
-        ['q16', '16. Preferred language'],
+        ['q16', '16. First dashboard view'],
+        ['q17', '17. Top three priorities'],
+        ['q18', '18. Software or files to connect'],
+        ['q19', '19. Preferred language'],
         ['comments', 'Additional comments']
       ]
     }

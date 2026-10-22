@@ -44,7 +44,7 @@
     navHint: $('#navHint'),
     rankGrid: $('#rankGrid'),
     rankHelp: $('#rankHelp'),
-    q14: $('#q14Value'),
+    rankValue: $('#rankGrid') ? $('input[type="hidden"]', $('#rankGrid').closest('.question')) : null,
     successName: $('#successName'),
     successChips: $('#successChips'),
     successSummary: $('#successSummary'),
@@ -348,7 +348,7 @@
       if (badge) badge.textContent = ranked ? String(index + 1) : '·';
       if (stateLabel) stateLabel.textContent = ranked ? `Priority ${index + 1}` : 'Select';
     });
-    if (els.q14) els.q14.value = rank.join('|');
+    if (els.rankValue) els.rankValue.value = rank.join('|');
     if (els.rankHelp) {
       els.rankHelp.textContent =
         rank.length === 3
