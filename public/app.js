@@ -9,6 +9,7 @@
   const TOTAL_STEPS = 6;
   const REVIEW_STEP = 6;
   const SECTION_NAMES = ['Operations', 'Finance', 'Stock & store', 'AI & automation', 'Priorities'];
+  const SECTION_NAMES_FR = ['Opérations', 'Finance', 'Stock & boutique', 'IA & automatisation', 'Priorités'];
 
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
@@ -71,6 +72,9 @@
   let rank = [];
   let saveTimer = null;
   let statusTimer = null;
+
+  const rankQuestionKey = () =>
+    els.rankGrid ? els.rankGrid.closest('.question')?.dataset.q || '' : '';
 
   /* ------------------------------------------------------------------ */
   /* Utilities                                                           */
@@ -206,7 +210,6 @@
       name: els.name.value.trim(),
       role: els.role.value.trim()
     };
-    state.answers.q14 = rank.slice();
     return state.answers;
   }
 
@@ -346,14 +349,22 @@
       const badge = $('.rank-badge', button);
       const stateLabel = $('.rank-option__state', button);
       if (badge) badge.textContent = ranked ? String(index + 1) : '·';
-      if (stateLabel) stateLabel.textContent = ranked ? `Priority ${index + 1}` : 'Select';
+      if (stateLabel) stateLabel.textContent = ranked
+        ? uiText(`Priority ${index + 1}`, `Priorité ${index + 1}`)
+        : uiText('Select', 'Choisir');
     });
     if (els.rankValue) els.rankValue.value = rank.join('|');
     if (els.rankHelp) {
       els.rankHelp.textContent =
         rank.length === 3
-          ? 'Top three selected. Click one to remove it, then choose another.'
-          : 'Your first pick = priority 1. Click a selected item to remove it.';
+          ? uiText(
+              'Top three selected. Click one to remove it, then choose another.',
+              'Trois choix sélectionnés. Cliquez sur un choix pour le retirer, puis choisissez-en un autre.'
+            )
+          : uiText(
+              'Your first pick = priority 1. Click a selected item to remove it.',
+              'Votre premier choix = priorité 1. Cliquez sur un choix sélectionné pour le retirer.'
+            );
     }
   }
 
@@ -383,47 +394,63 @@
   /* Review                                                              */
   /* ------------------------------------------------------------------ */
 
+  const lang = () => (window.VerdaraI18n ? window.VerdaraI18n.getLang() : 'en');
+  const isFr = () => lang() === 'fr';
+
+  // Display helper: translate a stored English option value for display only.
+  const displayValue = (value) =>
+    isFr() && window.VerdaraI18n ? window.VerdaraI18n.opt(String(value)) : String(value);
+
+  const uiText = (en, fr) => (isFr() ? fr : en);
+
   function renderAnswer(question, value) {
     if (question.type === 'rank') {
       const items = Array.isArray(value) ? value : [];
-      if (!items.length) return '<span class="review-empty">Not answered</span>';
+      if (!items.length) return `<span class="review-empty">${uiText('Not answered', 'Sans réponse')}</span>`;
       return `<ol class="review-rank">${items
         .map(
           (item, index) =>
-            `<li><span class="review-rank__num">${index + 1}</span>${escapeHtml(item)}</li>`
+            `<li><span class="review-rank__num">${index + 1}</span>${escapeHtml(displayValue(item))}</li>`
         )
         .join('')}</ol>`;
     }
 
     if (Array.isArray(value)) {
-      if (!value.length) return '<span class="review-empty">Not answered</span>';
+      if (!value.length) return `<span class="review-empty">${uiText('Not answered', 'Sans réponse')}</span>`;
       return `<div class="review-chips">${value
-        .map((item) => `<span class="review-chip">${escapeHtml(item)}</span>`)
+        .map((item) => {
+          const clean = String(item).replace(/^Other:\s*/, '');
+          const shown = String(item).startsWith('Other')
+            ? uiText('Other', 'Autre') + (clean !== 'Other' ? ': ' + clean : '')
+            : displayValue(item);
+          return `<span class="review-chip">${escapeHtml(shown)}</span>`;
+        })
         .join('')}</div>`;
     }
 
-    if (!value) return '<span class="review-empty">Not answered</span>';
-    return escapeHtml(value);
+    if (!value) return `<span class="review-empty">${uiText('Not answered', 'Sans réponse')}</span>`;
+    return escapeHtml(displayValue(value));
   }
 
   function renderReview() {
     collectAll();
+    reviewSections = firstQuestionMeta();
     const parts = [];
 
     parts.push(`
       <section class="review-block">
         <header class="review-block__head">
-          <h3>Your details</h3>
-          <button type="button" class="review-edit" data-edit="1">Edit</button>
+          <h3>${uiText('Your details', 'Vos coordonnées')}</h3>
+          <button type="button" class="review-edit" data-edit="1">${uiText('Edit', 'Modifier')}</button>
         </header>
         <dl class="review-list">
           <div class="review-item">
-            <dt>Name</dt>
-            <dd>${state.respondent.name ? escapeHtml(state.respondent.name) : '<span class="review-empty">Not answered</span>'}</dd>
+            <dt>${uiText('Name', 'Nom')}</dt>
+            <dd>${state.respondent.name ? escapeHtml(state.respondent.name) : `<span class="review-empty">${uiText('Not answered', 'Sans réponse')}</span>`}</dd>
           </div>
           <div class="review-item">
-            <dt>Role</dt>
-            <dd>${state.respondent.role ? escapeHtml(state.respondent.role) : '<span class="review-empty">Not answered</span>'}</dd>
+            <dt>${uiText('Role', 'Rôle')}</dt>
+            <dd>${state.respondent.role ? escapeHtml(state.respondent.role) : `<span class="review-empty">${uiText('Not answered', 'Sans réponse')}</span>`}</dd>
           </div>
         </dl>
       </section>
@@ -448,7 +475,7 @@
         <section class="review-block">
           <header class="review-block__head">
             <h3>${escapeHtml(section.title)}</h3>
-            <button type="button" class="review-edit" data-edit="${section.step}">Edit</button>
+            <button type="button" class="review-edit" data-edit="${section.step}">${uiText('Edit', 'Modifier')}</button>
           </header>
           <dl class="review-list">${items}</dl>
         </section>
@@ -474,8 +501,11 @@
     els.mobileBar.style.width = `${percent}%`;
     els.mobileStepLabel.textContent =
       state.step === REVIEW_STEP
-        ? 'Review & send'
-        : `Section ${state.step} of 5 · ${SECTION_NAMES[state.step - 1]}`;
+        ? uiText('Review & send', 'Vérifier & envoyer')
+        : uiText(
+            `Section ${state.step} of 5 · ${SECTION_NAMES[state.step - 1]}`,
+            `Section ${state.step} sur 5 · ${SECTION_NAMES_FR[state.step - 1]}`
+          );
 
     $$('li[data-step-link]', els.stepList).forEach((item) => {
       const itemStep = Number(item.dataset.stepLink);
@@ -491,22 +521,31 @@
     const isReview = state.step === REVIEW_STEP;
     if (!state.submitting) {
       els.btnNextLabel.textContent = isReview
-        ? 'Send my answers'
+        ? uiText('Send my answers', 'Envoyer mes réponses')
         : state.step === 5
-          ? 'Review answers'
-          : 'Continue';
+          ? uiText('Review answers', 'Vérifier les réponses')
+          : uiText('Continue', 'Continuer');
     }
     const iconUse = els.btnNext.querySelector('use');
     if (iconUse) iconUse.setAttribute('href', isReview ? '#i-send' : '#i-arrow');
 
-    const hints = {
-      1: 'Takes about 10–15 minutes in total',
-      2: 'Your answers save automatically on this device',
-      3: 'Your answers save automatically on this device',
-      4: 'Your answers save automatically on this device',
-      5: 'Next: a quick review before sending',
-      6: 'One click to send — you can still go back'
-    };
+    const hints = isFr()
+      ? {
+          1: 'Durée totale d\u2019environ 10–15 minutes',
+          2: 'Vos réponses sont enregistrées automatiquement sur cet appareil',
+          3: 'Vos réponses sont enregistrées automatiquement sur cet appareil',
+          4: 'Vos réponses sont enregistrées automatiquement sur cet appareil',
+          5: 'Ensuite : une vérification rapide avant l\u2019envoi',
+          6: 'Un clic pour envoyer — vous pouvez encore revenir'
+        }
+      : {
+          1: 'Takes about 10–15 minutes in total',
+          2: 'Your answers save automatically on this device',
+          3: 'Your answers save automatically on this device',
+          4: 'Your answers save automatically on this device',
+          5: 'Next: a quick review before sending',
+          6: 'One click to send — you can still go back'
+        };
     els.navHint.textContent = hints[state.step] || '';
   }
 
@@ -693,28 +732,30 @@
     const firstName = (state.respondent.name || '').split(/\s+/)[0];
     els.successName.textContent = firstName ? `, ${firstName}` : '';
 
-    const priorities = Array.isArray(state.answers.q14) ? state.answers.q14 : [];
-    if (priorities.length) {
-      els.successSummary.hidden = false;
-      els.successChips.innerHTML = priorities
-        .map(
-          (item, index) =>
-            `<span><b>${index + 1}</b>${escapeHtml(item)}</span>`
-        )
-        .join('');
-    } else {
-      els.successSummary.hidden = true;
-    }
+    renderSuccessChips();
 
     if (responseId) {
       els.successId.hidden = false;
-      els.successId.textContent = `Response ID · ${responseId.slice(0, 8).toUpperCase()}`;
+      els.successId.textContent = `${uiText('Response ID', 'Référence de réponse')} · ${responseId.slice(0, 8).toUpperCase()}`;
     } else {
       els.successId.hidden = true;
     }
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
     els.success.querySelector('h2')?.focus?.();
+  }
+
+  function renderSuccessChips() {
+    const key = rankQuestionKey();
+    const priorities = key && Array.isArray(state.answers[key]) ? state.answers[key] : [];
+    if (priorities.length) {
+      els.successSummary.hidden = false;
+      els.successChips.innerHTML = priorities
+        .map((item, index) => `<span><b>${index + 1}</b>${escapeHtml(displayValue(item))}</span>`)
+        .join('');
+    } else {
+      els.successSummary.hidden = true;
+    }
   }
 
   function showOffline() {
@@ -861,6 +902,19 @@
     state.step = Math.min(Math.max(state.step || 1, 1), TOTAL_STEPS);
     collectAll();
     updateChrome();
+
+    // Re-render language-dependent UI when the user switches EN/FR.
+    document.addEventListener('verdara:lang', () => {
+      reviewSections = firstQuestionMeta();
+      collectAll();
+      updateChrome();
+      if (state.step === REVIEW_STEP) renderReview();
+      if (!els.success.hidden) {
+        const firstName = (state.respondent.name || '').split(/\s+/)[0];
+        if (els.successName) els.successName.textContent = firstName ? `, ${escapeHtml(firstName)}` : '';
+        renderSuccessChips();
+      }
+    });
   }
 
   if (document.readyState === 'loading') {

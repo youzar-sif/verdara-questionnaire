@@ -53,6 +53,10 @@
     }
   ];
 
+  // Keys that need special rendering / stats. Keep in sync with server.js CSV_COLUMNS.
+  const RANK_KEY = 'q17';       // "Top three priorities"
+  const AI_CONTROL_KEY = 'q14'; // "How much control AI should have"
+
   const state = {
     items: [],
     filtered: [],
@@ -160,7 +164,7 @@
 
     const counts = new Map();
     state.items.forEach((item) => {
-      const priorities = item.answers?.q14;
+      const priorities = item.answers?.[RANK_KEY];
       if (Array.isArray(priorities) && priorities[0]) {
         counts.set(priorities[0], (counts.get(priorities[0]) || 0) + 1);
       }
@@ -233,9 +237,9 @@
       .map((item) => {
         const name = item.respondent?.name || 'Anonymous';
         const role = item.respondent?.role || 'Role not given';
-        const priorities = item.answers?.q14;
+        const priorities = item.answers?.[RANK_KEY];
         const topPriority = Array.isArray(priorities) && priorities[0] ? priorities[0] : '—';
-        const aiControl = item.answers?.q11 || '—';
+        const aiControl = item.answers?.[AI_CONTROL_KEY] || '—';
         const date = formatDay(item.submittedAt);
         return `
           <tr data-id="${escapeHtml(item.id)}" tabindex="0" role="button" aria-label="Open response from ${escapeHtml(name)}">
@@ -265,7 +269,7 @@
       return '<span class="review-empty">Not answered</span>';
     }
 
-    if (key === 'q14' && Array.isArray(value)) {
+    if (key === RANK_KEY && Array.isArray(value)) {
       return `<div class="drawer-rank">${value
         .map((item) => `<span>${escapeHtml(item)}</span>`)
         .join('')}</div>`;
