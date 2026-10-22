@@ -62,51 +62,58 @@ Back up the `data/` folder regularly. It is excluded from Git by `.gitignore`.
 
 ## Share a link
 
-### Option A — Host it (recommended)
+### Option A — Host it on Fly.io (this project's live setup)
 
-The app is a single Node process, so it runs on any small host.
+The app is a single Node process with a persistent volume, so responses survive
+restarts and redeploys.
 
-**Render (one-click, uses `render.yaml`)**
+**Live deployment**
 
-1. Push this folder to a GitHub repository.
-2. Render → **New → Blueprint** → connect the repo. Render reads `render.yaml`
-   and configures the runtime, start command and environment variables automatically.
-3. When prompted, enter `ADMIN_PASSWORD` and click **Apply**.
-4. Deploy, then share the generated URL.
+| | |
+| --- | --- |
+| Questionnaire | https://verdara-questionnaire.fly.dev |
+| Dashboard | https://verdara-questionnaire.fly.dev/admin |
+| App | https://fly.io/apps/verdara-questionnaire |
+| Region | `ams` (Amsterdam) |
+| Volume | `verdara_data` (1 GB) mounted at `/data` |
 
-> **Free tier warning:** Render does not allow persistent disks on free services, so
-> submissions live on the container's temporary filesystem. They survive idle
-> spin-downs but are **lost on every redeploy or restart** — export your CSV from
-> `/admin` before pushing a new commit. For permanent storage, upgrade to a paid
-> instance and add a disk mounted at `/var/data` with `DATA_DIR=/var/data`.
+**Deploying an update**
 
-**Render (manual)**
+```bash
+git add -A && git commit -m "..." && git push
+fly deploy
+```
 
-1. Push this folder to a GitHub repository.
-2. Render → **New → Web Service** → connect the repo.
-3. Build command: leave empty (there are no dependencies).
-4. Start command: `node server.js`.
-5. Environment variables:
-   - `ADMIN_PASSWORD` = a strong password
-   - `DATA_DIR` = `/var/data` *(only needed when a disk is mounted)*
-6. On a paid instance, add a **persistent disk** mounted at `/var/data` so responses
-   survive restarts and deploys.
-7. Deploy, then share the generated URL.
+**From scratch (new app)**
 
-> Render's free instance spins down after 15 minutes idle; the first visit after
-> that takes about 30 seconds to wake. If you need durable storage for free, keep
-> your own machine running and use the tunnel below instead.
+```bash
+fly apps create verdara-questionnaire
+fly volumes create verdara_data --size 1 --region ams
+fly secrets set ADMIN_PASSWORD=your-password
+fly deploy
+```
 
-**Railway**
+> `ADMIN_PASSWORD` must be set as a Fly **secret**, never in `fly.toml` or Git.
+> Pass it unquoted in cmd, or the quote characters become part of the password.
 
-1. Deploy the repo.
-2. Add a volume mounted at `/data`.
-3. Set `ADMIN_PASSWORD` and `DATA_DIR=/data`.
-4. Generate a public domain.
+**Useful commands**
 
-**Fly.io / VPS**
+```bash
+fly logs                                  # live logs
+fly status                                # machine and health state
+fly ssh console --command "ls /data/submissions"   # inspect stored responses
+fly volumes list                          # volume state
+```
 
-Run `node server.js` behind HTTPS (Caddy, Nginx, or the platform's proxy). Set `ADMIN_PASSWORD` and `DATA_DIR` to a persistent volume.
+**Other hosts**
+
+- **Render** — free tier works but does **not** allow persistent disks, so responses
+  are lost on every redeploy. Set `ADMIN_PASSWORD` and (on a paid plan) mount a disk
+  at `/var/data` with `DATA_DIR=/var/data`.
+- **Railway** — deploy the repo, add a volume at `/data`, set `ADMIN_PASSWORD` and
+  `DATA_DIR=/data`.
+- **Any VPS** — run `node server.js` behind HTTPS (Caddy, Nginx or the platform's
+  proxy) with `ADMIN_PASSWORD` and `DATA_DIR` pointing at a persistent disk.
 
 ### Option B — Share temporarily from your computer
 
